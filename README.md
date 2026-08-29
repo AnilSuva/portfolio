@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anil Suva - Personal Portfolio
 
-## Getting Started
+A modern, responsive, and SEO-optimized personal developer portfolio built with the Next.js App Router.
 
-First, run the development server:
+![Portfolio Preview](/public/favicon.ico) <!-- You can replace this with a real screenshot later -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
+[View Live Portfolio](https://anilsuva.com) *(Update with your actual Vercel/live URL when deployed)*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
+- **Modern Tech Stack**: Built with Next.js 15+, React 19, and TypeScript.
+- **Premium Design**: Dark-themed UI with emerald green accents, glassmorphism, and subtle glow effects using Tailwind CSS v4.
+- **Fully Responsive**: Flawless experience across mobile, tablet, and desktop screens.
+- **Performance & SEO Optimized**: Pre-rendered static pages, custom metadata, and JSON-LD structured data for superior search engine ranking.
+- **Working Contact Form**: Integrated with Web3Forms to receive emails directly without needing a backend server.
+- **Smooth Navigation**: Native smooth scrolling and sticky glass navigation bar.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Built With
+- **[Next.js](https://nextjs.org/)** - React framework for production
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework (v4)
+- **[TypeScript](https://www.typescriptlang.org/)** - Static typing for robust code
+- **[Lucide React](https://lucide.dev/)** - Beautiful, consistent icons
+- **[Web3Forms](https://web3forms.com/)** - Contact form backend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💻 Getting Started
 
-## Learn More
+To run this project locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AnilSuva/portfolio.git
+   cd portfolio
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Set up environment variables (optional)**
+   If you want to hide your Web3Forms access key, create a `.env.local` file in the root directory and add:
+   ```env
+   NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
+   ```
+   *(Note: You will need to update `Contact.tsx` to use this environment variable if you do this).*
 
-## Deploy on Vercel
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Open the app**
+   Navigate to [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+- `/app` - Next.js App Router (pages, layout, global styles, SEO config)
+- `/components` - Reusable UI components (Hero, Navbar, Projects, Contact, etc.)
+- `/data` - Centralized data file (`portfolio.ts`) containing all text, skills, and project data for easy updating.
+- `/public` - Static assets like images and favicons.
+
+## 🤝 Let's Connect
+- **LinkedIn**: [Anil Suva](https://www.linkedin.com/in/anil-suva-cte-gecbvn-it-441258290/)
+- **GitHub**: [@AnilSuva](https://github.com/AnilSuva)
+- **Email**: suvaanil80@gmail.com
