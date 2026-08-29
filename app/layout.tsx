@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: siteMetadata.title,
   description: siteMetadata.description,
-  keywords: ["Anil Suva", "Anil Suva Portfolio", "Full-Stack Developer", "Software Engineer", "React Developer", "Next.js Developer", "IT Engineer", "Bhavnagar"],
+  keywords: ["Anil Suva", "Anil Suva Portfolio", "Suva Anil", "Suva Anil Portfolio", "Full-Stack Developer", "Software Engineer", "React Developer", "Next.js Developer", "IT Engineer", "Bhavnagar"],
   authors: [{ name: siteMetadata.author, url: siteMetadata.siteUrl }],
   creator: siteMetadata.author,
   publisher: siteMetadata.author,
