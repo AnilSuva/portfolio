@@ -2,9 +2,9 @@ import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 
 export const siteMetadata = {
-  title: "Anil Suva",
-  description: "Personal portfolio of Anil Suva, an IT Engineering student and aspiring Full-Stack Developer building modern web applications.",
-  siteUrl: "https://anilsuva.com",
+  title: "Anil Suva | Full-Stack Developer & Software Engineer",
+  description: "Personal portfolio of Anil Suva, a Full-Stack Developer and IT Engineering student specializing in React, Next.js, Node.js, and modern web applications.",
+  siteUrl: "https://www.anilsuva.com",
   author: "Anil Suva",
 };
 
