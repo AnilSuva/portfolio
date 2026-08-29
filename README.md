@@ -2,10 +2,8 @@
 
 A modern, responsive, and SEO-optimized personal developer portfolio built with the Next.js App Router.
 
-![Portfolio Preview](/public/favicon.ico) <!-- You can replace this with a real screenshot later -->
-
 ## 🚀 Live Demo
-[View Live Portfolio](https://anilsuva.com) *(Update with your actual Vercel/live URL when deployed)*
+[View Live Portfolio](https://portfolio-nu-hazel-79.vercel.app/) *(Update with your actual Vercel/live URL when deployed)*
 
 ## ✨ Features
 - **Modern Tech Stack**: Built with Next.js 15+, React 19, and TypeScript.

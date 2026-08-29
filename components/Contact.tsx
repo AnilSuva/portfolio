@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { personalInfo } from "@/data/portfolio";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,14 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  const showToast = (message: string, type: "success" | "error") => {
+    setToast({ message, type });
+    setTimeout(() => {
+      setToast(null);
+    }, 5000);
+  };
 
     const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +33,7 @@ export default function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "01979f2a-d6c7-429a-94d0-c12c37ae4c10", // Or use process.env.NEXT_PUBLIC_WEB3FORMS_KEY
+          access_key: "01979f2a-d6c7-429a-94d0-c12c37ae4c10", 
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -34,13 +43,13 @@ export default function Contact() {
       const result = await response.json();
       
       if (result.success) {
-        alert("Message sent successfully!");
+        showToast("Message sent successfully!", "success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        alert("Something went wrong. Please try again.");
+        showToast("Something went wrong. Please try again.", "error");
       }
     } catch (error) {
-      alert("Error sending message.");
+        showToast("Error sending message.", "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -165,6 +174,22 @@ export default function Contact() {
           </div>
           
         </div>
+      </div>
+
+      {/* Premium Toast Notification */}
+      <div 
+        className={cn(
+          "fixed bottom-8 right-8 z-50 flex items-center gap-3 px-6 py-4 rounded-2xl border backdrop-blur-md shadow-2xl transition-all duration-500",
+          toast 
+            ? "translate-y-0 opacity-100" 
+            : "translate-y-12 opacity-0 pointer-events-none",
+          toast?.type === "success" 
+            ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
+            : "bg-red-500/10 border-red-500/20 text-red-400"
+        )}
+      >
+        {toast?.type === "success" ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
+        <p className="font-medium text-sm text-(--foreground)">{toast?.message}</p>
       </div>
     </section>
   );
