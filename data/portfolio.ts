@@ -21,7 +21,7 @@ export const personalInfo = {
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/anil-suva-cte-gecbvn-it-441258290/", // Placeholder
+      url: "https://www.linkedin.com/in/anil-suva-441258290/", // Placeholder
       icon: LinkedinIcon,
     },
     {
