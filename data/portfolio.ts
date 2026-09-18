@@ -67,7 +67,7 @@ export const projects = [
     description: "A Paytm-inspired digital wallet built with React and TypeScript, featuring authentication, user search, wallet-to-wallet transfers, transaction history, and a clean responsive dashboard. Built with React, Express, MongoDB, Mongoose, and Tailwind CSS.",
     technologies: ["Express", "MongoDB", "TypeScript", "Bcrypt", "Tailwind"],
     githubUrl: "https://github.com/AnilSuva/paytm", // Placeholder
-    liveUrl: "https://paytm-rupees.vercel.app",
+    liveUrl: "https://paytm.anilsuva.com",
     image: "/api/placeholder/800/450",
   },
 ];
