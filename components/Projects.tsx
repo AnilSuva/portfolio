@@ -3,14 +3,15 @@ import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-(--background)">
+    <section id="projects" className="py-24 px-6 relative border-t border-zinc-900/50">
       <div className="container mx-auto max-w-5xl">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-(--foreground)">
-            /Projects
+          <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-4">
+            <span className="text-emerald-500 font-mono text-sm">02.</span>
+            Selected Work
           </h2>
-          <div className="w-20 h-1 bg-(--accent) rounded-full mb-6"></div>
-          <p className="text-(--text-secondary) font-light max-w-2xl text-lg">
+          <div className="w-12 h-[1px] bg-emerald-500/50 mb-8"></div>
+          <p className="text-zinc-400 font-light max-w-2xl text-lg">
             A selection of my recent work, showcasing my skills in frontend and backend development.
           </p>
         </div>

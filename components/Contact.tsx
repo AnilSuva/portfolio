@@ -48,7 +48,7 @@ export default function Contact() {
       } else {
         showToast("Something went wrong. Please try again.", "error");
       }
-    } catch (error) {
+    } catch {
         showToast("Error sending message.", "error");
     } finally {
       setIsSubmitting(false);
@@ -64,31 +64,32 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative bg-(--surface)/30 border-t border-(--border-color)">
+    <section id="contact" className="py-24 px-6 relative border-t border-zinc-900/50">
       <div className="container mx-auto max-w-5xl">
         <div className="flex flex-col md:flex-row gap-16 items-start">
           
           <div className="w-full md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-(--foreground)">
-              /Contact
+            <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-4">
+              <span className="text-emerald-500 font-mono text-sm">05.</span>
+              Get In Touch
             </h2>
-            <div className="w-20 h-1 bg-(--accent) rounded-full mb-8"></div>
+            <div className="w-12 h-[1px] bg-emerald-500/50 mb-8"></div>
             
-            <p className="text-(--text-secondary) font-light text-lg mb-10 leading-relaxed">
-              you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
+            <p className="text-zinc-400 font-light text-lg mb-12 leading-relaxed">
+              If you have a question, a project idea, or just want to say hi, I&apos;ll try my best to get back to you!
             </p>
             
             <div className="space-y-6">
               <a 
                 href={`mailto:${personalInfo.email}`}
-                className="group flex items-center gap-6 p-6 rounded-2xl bg-(--surface) border border-(--border-color) hover:border-(--accent)/50 hover:bg-(--surface-hover) transition-all duration-300"
+                className="group flex items-center gap-6 p-6 rounded-xl bg-zinc-900/30 border border-zinc-800/80 hover:border-emerald-500/30 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-full bg-(--surface-hover) border border-(--border-color) flex items-center justify-center text-(--accent) group-hover:scale-110 group-hover:bg-(--accent) group-hover:text-white transition-all duration-300">
-                  <Mail className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-emerald-500/10 group-hover:text-emerald-400 group-hover:border-emerald-500/20 transition-all duration-300">
+                  <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-(--text-secondary) text-sm font-medium mb-1 uppercase tracking-wider">Email Me At</h3>
-                  <p className="text-(--foreground) font-semibold text-lg">{personalInfo.email}</p>
+                  <h3 className="text-zinc-500 text-xs font-mono uppercase tracking-wider mb-1">Email</h3>
+                  <p className="text-zinc-200 font-medium">{personalInfo.email}</p>
                 </div>
               </a>
 
@@ -102,9 +103,9 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit my ${social.name}`}
-                      className="w-14 h-14 rounded-2xl bg-(--surface) border border-(--border-color) flex items-center justify-center text-(--text-secondary) hover:text-(--accent) hover:border-(--accent)/50 hover:bg-(--surface-hover) transition-all duration-300 hover:-translate-y-1"
+                      className="w-12 h-12 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300"
                     >
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5" />
                     </a>
                   );
                 })}
@@ -113,9 +114,9 @@ export default function Contact() {
           </div>
           
           <div className="w-full md:w-1/2">
-            <form onSubmit={handleSubmit} className="glass-panel p-8 md:p-10 rounded-3xl flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="bg-zinc-900/20 border border-zinc-800/60 p-8 rounded-xl flex flex-col gap-6">
               <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-sm font-medium text-(--text-secondary) ml-1">
+                <label htmlFor="name" className="text-xs font-mono uppercase tracking-wider text-zinc-500 ml-1">
                   Name
                 </label>
                 <input
@@ -125,13 +126,13 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-(--background) border border-(--border-color) rounded-xl px-5 py-4 text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--accent)/50 focus:border-(--accent) transition-all"
+                  className="bg-zinc-950/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-200 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
                   placeholder="John Doe"
                 />
               </div>
               
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-sm font-medium text-(--text-secondary) ml-1">
+                <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-zinc-500 ml-1">
                   Email
                 </label>
                 <input
@@ -141,13 +142,13 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-(--background) border border-(--border-color) rounded-xl px-5 py-4 text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--accent)/50 focus:border-(--accent) transition-all"
+                  className="bg-zinc-950/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-200 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
                   placeholder="john@example.com"
                 />
               </div>
               
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-medium text-(--text-secondary) ml-1">
+                <label htmlFor="message" className="text-xs font-mono uppercase tracking-wider text-zinc-500 ml-1">
                   Message
                 </label>
                 <textarea
@@ -157,7 +158,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="bg-(--background) border border-(--border-color) rounded-xl px-5 py-4 text-(--foreground) focus:outline-none focus:ring-2 focus:ring-(--accent)/50 focus:border-(--accent) transition-all resize-none"
+                  className="bg-zinc-950/50 border border-zinc-800 rounded-lg px-4 py-3 text-zinc-200 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
@@ -165,10 +166,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group flex items-center justify-center gap-2 w-full bg-(--foreground) text-(--background) py-4 rounded-xl font-bold hover:bg-(--accent) hover:text-white transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+                className="group flex items-center justify-center gap-2 w-full bg-zinc-100 text-zinc-900 py-4 rounded-lg font-medium hover:bg-zinc-300 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
-                {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                {!isSubmitting && <Send className="w-4 h-4" />}
               </button>
             </form>
           </div>
@@ -179,7 +180,7 @@ export default function Contact() {
       {/* Premium Toast Notification */}
       <div 
         className={cn(
-          "fixed bottom-8 right-8 z-50 flex items-center gap-3 px-6 py-4 rounded-2xl border backdrop-blur-md shadow-2xl transition-all duration-500",
+          "fixed bottom-8 right-8 z-50 flex items-center gap-3 px-6 py-4 rounded-lg border shadow-2xl transition-all duration-500",
           toast 
             ? "translate-y-0 opacity-100" 
             : "translate-y-12 opacity-0 pointer-events-none",
@@ -189,7 +190,7 @@ export default function Contact() {
         )}
       >
         {toast?.type === "success" ? <CheckCircle className="w-5 h-5" /> : <AlertCircle className="w-5 h-5" />}
-        <p className="font-medium text-sm text-(--foreground)">{toast?.message}</p>
+        <p className="font-medium text-sm text-zinc-100">{toast?.message}</p>
       </div>
     </section>
   );

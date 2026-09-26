@@ -49,31 +49,31 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-(--surface)/80 backdrop-blur-md border-b border-(--border-color) py-3"
+          ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900 py-3"
           : "bg-transparent py-5"
       )}
     >
       <div className="container mx-auto px-6 max-w-6xl flex items-center justify-between">
         <Link 
           href="#home" 
-          className="text-xl font-bold tracking-tighter text-(--foreground) hover:text-(--accent) transition-colors"
+          className="text-xl font-bold tracking-tighter text-zinc-100 hover:text-emerald-400 transition-colors"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           {personalInfo.name.split(" ").map((n) => n[0]).join("")}
-          <span className="text-(--accent)">.</span>
+          <span className="text-emerald-500">.</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 bg-zinc-900/50 px-6 py-2.5 rounded-full border border-zinc-800/80 backdrop-blur-sm">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-(--foreground)",
+                "text-sm font-medium transition-colors hover:text-emerald-400",
                 activeSection === link.href.substring(1) 
-                  ? "text-(--foreground)" 
-                  : "text-(--text-secondary)"
+                  ? "text-emerald-400" 
+                  : "text-zinc-400"
               )}
             >
               {link.name}
@@ -83,7 +83,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden p-2 text-(--text-secondary) hover:text-(--foreground) transition-colors"
+          className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -93,17 +93,17 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-(--surface) border-b border-(--border-color) shadow-xl overflow-hidden glass-panel">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-zinc-950 border-b border-zinc-900 shadow-xl overflow-hidden">
           <nav className="flex flex-col py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "px-6 py-3 text-base font-medium transition-colors hover:bg-(--surface-hover)",
+                  "px-6 py-3 text-base font-medium transition-colors hover:bg-zinc-900",
                   activeSection === link.href.substring(1)
-                    ? "text-(--accent)"
-                    : "text-(--text-secondary)"
+                    ? "text-emerald-400 bg-zinc-900/50"
+                    : "text-zinc-400"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

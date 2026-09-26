@@ -6,15 +6,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-10 px-6 border-t border-(--border-color) bg-(--background)">
-      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="py-10 px-6 border-t border-zinc-900/80 bg-zinc-950">
+      <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-6">
         
         <div className="flex flex-col items-center md:items-start gap-2">
-          <Link href="#home" className="text-xl font-bold tracking-tighter">
+          <Link href="#home" className="text-xl font-bold tracking-tighter text-zinc-100">
             {personalInfo.name.split(" ").map((n) => n[0]).join("")}
-            <span className="text-(--accent)">.</span>
+            <span className="text-emerald-500">.</span>
           </Link>
-          <p className="text-(--text-muted) text-sm">
+          <p className="text-zinc-500 text-sm">
             © {currentYear} {personalInfo.name}. All rights reserved.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit my ${social.name}`}
-                className="text-(--text-secondary) hover:text-(--foreground) transition-colors"
+                className="text-zinc-500 hover:text-emerald-400 transition-colors"
               >
                 <Icon className="w-5 h-5" />
               </a>
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <Link 
           href="#home"
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-(--surface) border border-(--border-color) text-(--text-secondary) hover:text-(--accent) hover:border-(--accent) transition-all duration-300 group"
+          className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 group"
           aria-label="Back to top"
         >
           <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 
 interface ProjectProps {
@@ -18,27 +18,33 @@ export default function ProjectCard({
   liveUrl,
 }: ProjectProps) {
   return (
-    <div className="glass-panel group rounded-3xl overflow-hidden flex flex-col h-full hover:border-(--accent)/50 transition-all duration-500 hover:-translate-y-2">
-      {/* Visual Header - replacing image placeholder with a gradient mesh effect to keep it lightweight and premium */}
-      <div className="h-48 w-full relative overflow-hidden bg-(--surface-hover) border-b border-(--border-color)">
-        <div className="absolute inset-0 bg-noise opacity-20"></div>
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-(--accent) rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-emerald-500 rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity duration-500"></div>
-
-        {/* Abstract representation of a project */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-2xl bg-(--surface) border border-(--border-color)/50 shadow-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-            <span className="font-bold text-xl text-(--accent)">{title.charAt(0)}</span>
-          </div>
-        </div>
+    <div className="group relative flex flex-col h-full bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 transition-colors duration-300 rounded-xl overflow-hidden">
+      
+      {/* Top Bar (Browser/Window aesthetic) */}
+      <div className="h-10 w-full border-b border-zinc-800/80 bg-zinc-950/50 flex items-center px-4 gap-2">
+        <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 group-hover:bg-zinc-700 transition-colors"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 group-hover:bg-zinc-700 transition-colors delay-75"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-zinc-800 group-hover:bg-zinc-700 transition-colors delay-150"></div>
       </div>
 
-      <div className="p-8 flex flex-col flex-1">
-        <h3 className="text-2xl font-bold mb-3 text-(--foreground) group-hover:text-(--accent) transition-colors">
-          {title}
-        </h3>
+      <div className="p-6 md:p-8 flex flex-col flex-1">
+        <div className="flex justify-between items-start mb-4">
+          <h3 className="text-xl md:text-2xl font-semibold text-zinc-100 group-hover:text-emerald-400 transition-colors">
+            {title}
+          </h3>
+          {liveUrl && (
+            <a 
+              href={liveUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-zinc-500 hover:text-emerald-400 transition-colors"
+            >
+              <ArrowUpRight className="w-5 h-5" />
+            </a>
+          )}
+        </div>
 
-        <p className="text-(--text-secondary) font-light leading-relaxed mb-6 flex-1">
+        <p className="text-zinc-400 font-light leading-relaxed mb-8 flex-1">
           {description}
         </p>
 
@@ -46,24 +52,24 @@ export default function ProjectCard({
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="text-xs font-medium px-3 py-1 bg-(--surface-hover) border border-(--border-color) rounded-full text-(--text-secondary)"
+              className="text-[11px] uppercase tracking-wider font-mono px-2.5 py-1 bg-zinc-950/50 border border-zinc-800 text-zinc-400 rounded-md"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-4 pt-4 border-t border-(--border-color)/50">
+        <div className="flex items-center gap-4 pt-5 border-t border-zinc-800/80">
           {githubUrl && (
             <a
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-medium text-(--text-secondary) hover:text-(--foreground) transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors"
               aria-label={`View ${title} source on GitHub`}
             >
               <GithubIcon className="w-4 h-4" />
-              <span>Code</span>
+              <span>Repository</span>
             </a>
           )}
 
@@ -72,11 +78,11 @@ export default function ProjectCard({
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm font-medium text-(--accent) hover:text-(--accent-hover) transition-colors ml-auto group/link"
+              className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors ml-auto group/link"
               aria-label={`Visit ${title} live demo`}
             >
               <span>Live Demo</span>
-              <ExternalLink className="w-4 h-4 transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
+              <ExternalLink className="w-4 h-4" />
             </a>
           )}
         </div>
