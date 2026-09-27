@@ -70,4 +70,19 @@ export const projects = [
     liveUrl: "https://paytm.anilsuva.com",
     image: "/api/placeholder/800/450",
   },
+  
+  {
+  title: "Omni Play",
+  description: "A mobile-first web game platform built for lightweight, responsive gameplay, featuring reusable game architecture, bot-powered play, and a clean UI designed for future multiplayer and graphical games.",
+  technologies: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Minimax AI"
+  ],
+  githubUrl: "https://github.com/AnilSuva/games-frontend",
+  liveUrl: "https://games.anilsuva.com",
+  image: "/api/placeholder/800/450",
+},
 ];
