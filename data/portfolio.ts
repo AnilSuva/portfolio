@@ -70,19 +70,37 @@ export const projects = [
     liveUrl: "https://paytm.anilsuva.com",
     image: "/api/placeholder/800/450",
   },
-  
+
   {
-  title: "Omni Play",
-  description: "A mobile-first web game platform built for lightweight, responsive gameplay, featuring reusable game architecture, bot-powered play, and a clean UI designed for future multiplayer and graphical games.",
-  technologies: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Minimax AI"
-  ],
-  githubUrl: "https://github.com/AnilSuva/games-frontend",
-  liveUrl: "https://games.anilsuva.com",
-  image: "/api/placeholder/800/450",
-},
+    title: "Omni Play",
+    description: "A mobile-first web game platform built for lightweight, responsive gameplay, featuring reusable game architecture, bot-powered play, and a clean UI designed for future multiplayer and graphical games.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Minimax AI"
+    ],
+    githubUrl: "https://github.com/AnilSuva/games-frontend",
+    liveUrl: "https://games.anilsuva.com",
+    image: "/api/placeholder/800/450",
+  },
+  {
+    title: "Blood Finder",
+    description: "An emergency blood-matching platform connecting patients with compatible donors in real-time. medical blood-group compatibility filtering, city-level matching, instant lock-screen mobile push alerts with device vibration, and one-tap emergency contact via Phone and WhatsApp.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Web Push API",
+      "Tailwind CSS",
+      "Google OAuth"
+    ],
+    githubUrl: "https://github.com/AnilSuva/blood-finder",
+    liveUrl: "https://blood-finder.anilsuva.com",
+    image: "/api/placeholder/800/450",
+  },
 ];
