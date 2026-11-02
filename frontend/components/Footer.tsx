@@ -39,7 +39,7 @@ export default function Footer() {
 
         <Link 
           href="#home"
-          className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 group"
+          className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-500 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-300 group mr-16 sm:mr-20 md:mr-24"
           aria-label="Back to top"
         >
           <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />

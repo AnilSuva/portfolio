@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { personalInfo } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -81,19 +81,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop Ask AI Button */}
-        <button
-          onClick={() => window.dispatchEvent(new CustomEvent("open-portfolio-chat"))}
-          className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-300 transition-all cursor-pointer backdrop-blur-sm shadow-sm"
-          title="Open AI Chatbot"
-        >
-          <Sparkles className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
-          <span>Ask AI</span>
-        </button>
-
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+          className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors ml-auto"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -120,16 +110,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                window.dispatchEvent(new CustomEvent("open-portfolio-chat"));
-              }}
-              className="flex items-center gap-2 px-6 py-3 text-base font-medium text-emerald-400 hover:bg-zinc-900 transition-colors text-left"
-            >
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span>Ask AI Assistant</span>
-            </button>
           </nav>
         </div>
       )}
