@@ -171,7 +171,79 @@ app.post('/api/chat', async (req: Request, res: Response): Promise<void> => {
       ];
     }
 
-    // Try primary and fallback models to guarantee high availability
+    const isStream = req.body?.stream !== false;
+
+    if (isStream) {
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache, no-transform');
+      res.setHeader('Connection', 'keep-alive');
+      res.flushHeaders?.();
+
+      let streamSucceeded = false;
+      let fullReply = '';
+      let modelSuccessfullyUsed = '';
+      let streamError: any = null;
+
+      for (const modelName of FALLBACK_MODELS) {
+        try {
+          const responseStream = await ai.models.generateContentStream({
+            model: modelName,
+            contents: contentsPayload,
+            config: {
+              systemInstruction: PORTFOLIO_SYSTEM_INSTRUCTION,
+              temperature: 0.7,
+            },
+          });
+
+          for await (const chunk of responseStream) {
+            const text = chunk.text;
+            if (text) {
+              fullReply += text;
+              res.write(`data: ${JSON.stringify({ text })}\n\n`);
+            }
+          }
+
+          modelSuccessfullyUsed = modelName;
+          streamSucceeded = true;
+          res.write(`data: ${JSON.stringify({ done: true, model: modelSuccessfullyUsed })}\n\n`);
+          res.end();
+          break;
+        } catch (err: any) {
+          console.warn(`[Gemini Stream] Model "${modelName}" failed, trying next fallback... Reason: ${err?.message || err}`);
+          streamError = err;
+        }
+      }
+
+      const durationMs = Date.now() - startTime;
+
+      if (!streamSucceeded) {
+        res.write(`data: ${JSON.stringify({ error: streamError?.message || 'Failed to generate response' })}\n\n`);
+        res.end();
+      }
+
+      // Save question, answer, and device details to MongoDB
+      try {
+        await ChatLog.create({
+          question: message.trim(),
+          answer: fullReply,
+          model: modelSuccessfullyUsed || 'failed',
+          deviceInfo,
+          networkInfo,
+          durationMs,
+          status: streamSucceeded ? 'success' : 'error',
+          errorMessage: streamSucceeded ? '' : (streamError?.message || 'Stream failed'),
+        });
+        if (streamSucceeded) {
+          console.log(`💾 [MongoDB] Saved streamed question from ${deviceInfo.deviceType} (${deviceInfo.mobileModel}) [${durationMs}ms]`);
+        }
+      } catch (dbErr: any) {
+        console.error('⚠️ [MongoDB] Failed to save chat log to database:', dbErr?.message || dbErr);
+      }
+
+      return;
+    }
+
+    // Non-streaming fallback
     let generatedReply: string | null = null;
     let modelSuccessfullyUsed = '';
     let lastError: any = null;
