@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { personalInfo } from "@/data/portfolio";
 import { ArrowRight, Mail, Code2, Terminal, Database } from "lucide-react";
+import OpenChatButton from "@/components/OpenChatButton";
 
 export default function Hero() {
   return (
@@ -55,6 +56,8 @@ export default function Hero() {
             <Mail className="w-4 h-4" />
             Get In Touch
           </Link>
+
+          <OpenChatButton />
         </div>
 
         {/* Tech Stack Mini Display */}
