@@ -115,7 +115,8 @@ export default function ChatBot() {
     setIsLoading(true);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const rawApiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const apiUrl = rawApiUrl.trim().replace(/\/+$/, "");
 
       // Prepare conversation history for the backend
       const history = messages

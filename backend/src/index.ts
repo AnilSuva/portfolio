@@ -12,8 +12,47 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Enable CORS for frontend requests
-app.use(cors());
+// Configure secure CORS allowed origins
+const defaultAllowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'https://portfolio-nu-hazel-79.vercel.app',
+  'https://www.anilsuva.com',
+  'https://anilsuva.com',
+];
+
+const envFrontendUrls = (process.env.FRONTEND_URL || '')
+  .split(',')
+  .map((url) => url.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
+const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...envFrontendUrls]));
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g. mobile apps, curl, or server-to-server)
+      if (!origin) return callback(null, true);
+
+      // Check allowed list
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow Vercel preview deployments (e.g. https://portfolio-*-anilsuva.vercel.app)
+      if (origin.endsWith('.vercel.app') || origin.endsWith('.anilsuva.com')) {
+        return callback(null, true);
+      }
+
+      console.warn(`[CORS Security] Blocked unauthorized request from origin: ${origin}`);
+      return callback(new Error(`CORS blocked unauthorized origin: ${origin}`));
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
 app.use(express.json());
 
 // Initialize MongoDB connection
