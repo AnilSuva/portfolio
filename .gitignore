@@ -38,3 +38,6 @@ next-env.d.ts
 *.pem
 .vercel
 .kilo/
+
+# Monitor tool (private/local)
+monitor/
